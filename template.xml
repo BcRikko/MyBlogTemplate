@@ -31,7 +31,7 @@
 <body>
   <header>
     <!-- Brand header -->
-    <b:section id='header' showaddelement='no' maxwidgets='1'>
+    <b:section id='s-header' showaddelement='no' maxwidgets='1'>
       <b:widget id='Header1' locked='true' title='header' version='1' visible='true'>
         <b:includable id='main'>
           <h1><b:include name='title'/></h1>
@@ -48,7 +48,7 @@
     </b:section>
   
     <!-- Navigation -->
-    <b:section id='navigation' showaddelement='no'>
+    <b:section id='s-navigation' showaddelement='no' maxwidget='1'>
       <b:widget id='PageList1' type='PageList' title='Pages' version='1' visible='true'>
         <b:includable id='main'>
           <nav>
@@ -73,7 +73,7 @@
 
   <!-- Main Contents -->
   <main>
-    <b:section id='main' showaddelement='yes'>
+    <b:section id='s-main' showaddelement='yes'>
       <b:widget id='Blog1' title='Article' type='Blog' version='1' visible='true'>
         <b:includable id='main'>
           <b:loop values='data:posts' var='post'>
@@ -121,6 +121,27 @@
               </b:if>
             </header>
 
+            <!-- Article content(top) -->
+            <b:if cond='data:blog.pageType != &quot;item&quot;'>
+              <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+                <section expr:id='&quot;summary&quot; + data:post.id'>
+                  <data:post.body />
+                  <a expr:href='data:post.url'>Read more...</a>
+                </section>
+              </b:if>
+            </b:if>
+            <!-- Article content(item) -->
+            <b:if cond='data:blog.pageType == &quot;item&quot;'>
+              <section>
+                <data:post.body />
+              </section>
+            </b:if>
+            <!-- Article content(static_page) -->
+            <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+              <section>
+                <data:post.body />
+              </section>
+            </b:if>
 
           </article>
         </b:includable>
@@ -129,7 +150,7 @@
   </main>
 
   <footer>
-    <b:section id='footer'>
+    <b:section id='s-footer'>
     </b:section>
   </footer>
 
