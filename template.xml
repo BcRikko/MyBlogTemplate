@@ -30,19 +30,44 @@
 
 <body>
   <header>
+    <!-- Brand header -->
     <b:section id='header' showaddelement='no' maxwidgets='1'>
       <b:widget id='Header1' locked='true' title='header' version='1' visible='true'>
         <b:includable id='main'>
           <h1><b:include name='title'/></h1>
+          <b:include name='description' />
         </b:includable>
 
         <b:includable id='title'>
           <a expr:href='data:blog:homepageUrl'><data:title/></a>
         </b:includable>
+        <b:includable id='description'>
+          <p><data:description /></p>
+        </b:includable>
       </b:widget>
     </b:section>
   
+    <!-- Navigation -->
     <b:section id='navigation' showaddelement='no'>
+      <b:widget id='PageList1' type='PageList' title='Pages' version='1' visible='true'>
+        <b:includable id='main'>
+          <nav>
+            <ul>
+              <b:loop values='data:links' var='link'>
+                <b:if cond='data:link.isCurrentPage'>
+                  <li class='active'>
+                    <data:link.title />
+                  </li>
+                <b:else/>
+                  <li>
+                    <a expr:href='data:link.href'><data:link.title /></a>
+                  </li>
+                </b:if>
+              </b:loop>
+            </ul>
+          </nav>
+        </b:includable>
+      </b:widget>
     </b:section>
   </header>
 
