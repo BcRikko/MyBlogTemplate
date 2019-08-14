@@ -31,6 +31,8 @@
 <body>
   <b:section id='main' showaddelement='yes'>
   </b:section>
+
+  <b:include data='blog' name='google-analytics'/>
 </body>
 
 </html>
