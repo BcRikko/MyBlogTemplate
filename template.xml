@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<html b:css='false' b:defaultwidgetversion='2' b:js='false' b:layoutsVersion='3' b:responsive='true'
-  b:templateVersion='1.3.0' b:version='2' xmlns='http://www.w3.org/1999/xhtml'
-  xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data'
+<!DOCTYPE html>
+<html
+  lang="ja"
+  b:version='2'
+  b:css='false'
+  b:defaultwidgetversion='2'
+  b:js='false'
+  b:layoutsVersion='3'
+  b:responsive='true'
+  b:templateVersion='1.3.0'
+  xmlns='http://www.w3.org/1999/xhtml'
+  xmlns:b='http://www.google.com/2005/gml/b'
+  xmlns:data='http://www.google.com/2005/gml/data'
   xmlns:expr='http://www.google.com/2005/gml/expr'>
 
 <head>
+  <b:if cond='data:blog.pageType == &quot;index&quot;'>
+    <title><data:blog.pageTitle/></title> 
+  <b:else/>
+    <b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+      <title><data:blog.title/>｜<data:blog.pageName/></title>
+    <b:else/>
+      <title>404 Not Found</title>
+    </b:if>
+  </b:if>
+
   <b:skin version='1.3.0'><![CDATA[]]></b:skin>
 </head>
 
