@@ -29,8 +29,33 @@
 </head>
 
 <body>
-  <b:section id='main' showaddelement='yes'>
-  </b:section>
+  <header>
+    <b:section id='header' showaddelement='no' maxwidgets='1'>
+      <b:widget id='Header1' locked='true' title='header' version='1' visible='true'>
+        <b:includable id='main'>
+          <h1><b:include name='title'/></h1>
+        </b:includable>
+
+        <b:includable id='title'>
+          <a expr:href='data:blog:homepageUrl'><data:title/></a>
+        </b:includable>
+      </b:widget>
+    </b:section>
+  
+    <b:section id='navigation' showaddelement='no'>
+    </b:section>
+  </header>
+
+  <main>
+    <b:section id='main' showaddelement='yes'>
+      <b:widget id='Blog1' title='post article' type='Blog' version='1'></b:widget>
+    </b:section>
+  </main>
+
+  <footer>
+    <b:section id='footer'>
+    </b:section>
+  </footer>
 
   <b:include data='blog' name='google-analytics'/>
 </body>
