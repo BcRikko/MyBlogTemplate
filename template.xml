@@ -126,7 +126,12 @@
               <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
                 <section expr:id='&quot;summary&quot; + data:post.id'>
                   <data:post.body />
-                  <a expr:href='data:post.url'>Read more...</a>
+                   
+                  <b:if cond='data:post.hasJumpLink'>
+                    <a expr:href='data:post.url' expr:title='data:post.title'>
+                      <data:post.jumpText/>
+                    </a>
+                  </b:if>
                 </section>
               </b:if>
             </b:if>
@@ -143,12 +148,17 @@
               </section>
             </b:if>
 
+            <footer>
+              <!-- TODO: share buttons -->
+              <!-- TODO: comments -->
+            </footer>
           </article>
         </b:includable>
       </b:widget>
     </b:section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <b:section id='s-footer'>
     </b:section>
