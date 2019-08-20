@@ -76,9 +76,15 @@
     <b:section id='s-main' showaddelement='yes'>
       <b:widget id='Blog1' title='Article' type='Blog' version='1' visible='true'>
         <b:includable id='main'>
+          <!-- Articles -->
           <b:loop values='data:posts' var='post'>
             <b:include data='post' name='post' />
           </b:loop>
+
+          <!-- Navigation  -->
+          <div>
+            <b:include name='next-prev' />
+          </div>
         </b:includable>
 
         <!-- Article -->
@@ -125,8 +131,8 @@
             <b:if cond='data:blog.pageType != &quot;item&quot;'>
               <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
                 <section expr:id='&quot;summary&quot; + data:post.id'>
+                  <!-- content -->
                   <data:post.body />
-                   
                   <b:if cond='data:post.hasJumpLink'>
                     <a expr:href='data:post.url' expr:title='data:post.title'>
                       <data:post.jumpText/>
@@ -153,6 +159,27 @@
               <!-- TODO: comments -->
             </footer>
           </article>
+        </b:includable>
+
+        <!-- Navigation -->
+        <b:includable id='next-prev'>
+          <div>
+            <b:if cond='data:newerPageUrl'>
+              <a expr:href='data:newerPageUrl' expr:title='data:newerPageTitle'>
+                <data:newerPageTitle />
+              </a>
+            </b:if>
+
+            <a expr:href='data:blog.homepageUrl'>
+              <data:homeMsg />
+            </a>
+
+            <b:if cond='data:olderPageUrl'>
+              <a expr:href='data:olderPageUrl' expr:title='data:olderPageTitle'>
+                <data:olderPageTitle />
+              </a>
+            </b:if>
+          </div>
         </b:includable>
       </b:widget>
     </b:section>
