@@ -39,7 +39,7 @@
         </b:includable>
 
         <b:includable id='title'>
-          <a expr:href='data:blog:homepageUrl'><data:title/></a>
+          <a expr:href='data:blog.homepageUrl'><data:title/></a>
         </b:includable>
         <b:includable id='description'>
           <p><data:description /></p>
@@ -65,6 +65,11 @@
                 </b:if>
               </b:loop>
             </ul>
+
+            <form action='/search' method='get'>
+              <input type='search' name='q' placeholder='Search...' value='' />
+              <button type='submit'>Search</button>
+            </form>
           </nav>
         </b:includable>
       </b:widget>
